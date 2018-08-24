@@ -1,0 +1,49 @@
+<div class="fa fa-refresh loader pull-right" *ngIf="topStoriesLoading">
+</div>
+<div class="row align-items-center rowcard" *ngIf="topStories">
+  <div class="header">
+  </div>
+  <div class="clearfix col-xs-12 col-sm-12 col-md-6 col-lg-6 cardholder" *ngFor="let story of topStories.results;index as i">
+    <div class="card">
+      <div class="leftcard">
+        <div class="imageholder" *ngIf="story.multimedia.length>0 && story.multimedia[0].url && story.multimedia[0].type == 'image'">
+          <img [src]="story.multimedia[0].url" class="img-responsive img-rounded cardimage" />
+        </div>
+        <div class="times pull-left text-muted">
+          <div class="timedata">
+              <p><i class="fa fa-clock-o"></i> : {{story.updated_date | amTimeAgo}}</p>
+              <p><i class="fa fa-print"></i> : {{story.published_date | amTimeAgo}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="rightcard">
+        <div class="title">
+          <h3>{{(story.title.length > 50)? ((story.title | slice:0:50)+'...'):(story.title)}}</h3>
+        </div>
+        <div class="abstract">
+          <h5>{{(story.abstract.length > 135)? ((story.abstract | slice:0:135)+'...'):(story.abstract)}}</h5>
+        </div>
+        <div class="cardfooter">
+          <p class="text-right text-primary">
+            <span class="ellipses">
+              <i class="fa fa-user"></i> &nbsp;{{story.byline.substr(3)}}</span>
+          </p>
+        </div>
+      </div>
+      <!-- <span class="extrainfo bg-info datebadge text-left pull-left">
+        <span *ngIf="story.section">
+          <i class="fa fa-building-o"></i>: {{story.section}}
+        </span>,
+        <span *ngIf="story.item_type">
+          <i class="fa fa-newspaper-o"></i>: {{story.item_type}}
+        </span>
+        <span class="badge">
+            <i></i>{{i+1}}
+        </span>
+      </span> -->
+    </div>
+  </div>
+</div>
+<p>
+  <!-- {{nyts.topStories | json}} -->
+</p>
