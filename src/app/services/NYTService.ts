@@ -27,7 +27,7 @@ export class NYTService {
         ).subscribe(() => {
             this.topStoriesLoading.emit(true);
             this.http.get<JSON>(
-                'https://api.nytimes.com/svc/topstories/v2/home.json?api-key=9405ffd802bb48e6894055acf02004dd'
+                'https://api.nytimes.com/svc/topstories/v2/home.json?api-key=SReq4jI9sjDyIvGrSGUliDytJlmQnU94'
             ).subscribe(
                 (stories) => {
                     if (stories && stories['status'] && stories['status'] === 'OK') {
